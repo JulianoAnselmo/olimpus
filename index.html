@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO BÁSICO E OPEN GRAPH (Para ficar lindo ao compartilhar no WhatsApp/Instagram) -->
+  <title>Academia Olimpus | A Melhor Experiência de Treino em Taquaritinga-SP</title>
+  <meta name="description" content="Academia Olimpus em Taquaritinga-SP. Estrutura premium, ambiente 100% climatizado, musculação, piscina coberta e bike indoor. Venha treinar com os melhores.">
+  <meta name="keywords" content="academia, taquaritinga, musculação, natação, hidroginástica, fitness, olimpus, totalpass, wellhub">
+  <meta name="theme-color" content="#f4c414">
+  <meta property="og:title" content="Academia Olimpus | Taquaritinga-SP">
+  <meta property="og:description" content="Estrutura premium, ambiente climatizado e acompanhamento real. Conheça a Olimpus.">
+  <meta property="og:image" content="Academia%20Olimpus%20ao%20entardecer.png">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon" type="image/png" href="Logo%20moderno%20Academia%20Olimpus.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. VARIÁVEIS E RESET
+       ========================================================================== */
+    :root {
+      --primary: #f4c414;
+      --primary-hover: #e0b410;
+      --primary-glow: rgba(244, 196, 20, 0.15);
+      
+      --bg: #ffffff;
+      --bg-alt: #f8f9fa;
+      --surface: #ffffff;
+      
+      --text-main: #090a0b;
+      --text-muted: #6b7280;
+      
+      --border: #ececec;
+      
+      --wpp: #25D366;
+      --wpp-hover: #128C7E;
+      
+      --radius-sm: 12px;
+      --radius-md: 24px;
+      --radius-lg: 40px;
+      --radius-pill: 999px;
+      
+      --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 20px 40px rgba(0, 0, 0, 0.08);
+      --shadow-glow: 0 12px 32px var(--primary-glow);
+      
+      --ease: cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; overflow-x: hidden; }
+    body { font-family: 'Manrope', sans-serif; color: var(--text-main); background-color: var(--bg); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100vw; }
+
+    @media (pointer: coarse) { 
+      * { cursor: auto !important; } 
+      .custom-cursor, .custom-cursor-follower { display: none !important; } 
+      .magnetic { transform: none !important; }
+    }
+
+    img { max-width: 100%; height: auto; display: block; object-fit: cover; }
+    a, button { text-decoration: none; color: inherit; background: transparent; border: none; outline: none; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+
+    /* ==========================================================================
+       2. PRELOADER E CURSOR
+       ========================================================================== */
+    #preloader { position: fixed; inset: 0; background: var(--bg); z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s var(--ease), visibility 0.6s; }
+    #preloader.hide { opacity: 0; visibility: hidden; }
+    .loader-content { display: flex; flex-direction: column; align-items: center; gap: 1rem; animation: pulse 1.5s infinite; }
+    .loader-content img { width: 80px; filter: grayscale(1); }
+    .loader-content span { font-family: 'Barlow Condensed'; font-size: 2rem; font-weight: 800; letter-spacing: 0.1em; color: var(--text-main); }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.95); } }
+
+    .custom-cursor { position: fixed; top: 0; left: 0; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s var(--ease); mix-blend-mode: multiply; }
+    .custom-cursor-follower { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border: 1px solid var(--primary); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: transform 0.1s linear, width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.3s var(--ease); }
+    body.cursor-hover .custom-cursor { width: 50px; height: 50px; background: rgba(244, 196, 20, 0.4); mix-blend-mode: normal; }
+    body.cursor-hover .custom-cursor-follower { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
+
+    /* ==========================================================================
+       3. TIPOGRAFIA E BÁSICOS
+       ========================================================================== */
+    h1, h2, h3 { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; line-height: 1.05; color: var(--text-main); letter-spacing: -0.01em; }
+    h1 { font-size: clamp(3.2rem, 8vw, 7.5rem); font-weight: 800; margin-bottom: 1rem; }
+    h2 { font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 800; margin-bottom: 1rem; }
+    h3 { font-size: clamp(1.8rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 0.5rem; }
+    p { color: var(--text-muted); font-size: clamp(1rem, 2vw, 1.15rem); font-weight: 500; }
+    .text-stroke { color: transparent; -webkit-text-stroke: 2px var(--text-main); font-style: italic; }
+
+    .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg); padding: 0.6rem 1.2rem; border-radius: var(--radius-pill); border: 1px solid var(--border); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm); }
+    .badge::before { content: ''; display: block; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; padding: 1.2rem 2.8rem; border-radius: var(--radius-pill); font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; transition: background 0.4s var(--ease), color 0.4s var(--ease), box-shadow 0.4s var(--ease), transform 0.1s linear; position: relative; text-align: center; }
+    .btn-primary { background: var(--primary); color: var(--text-main); box-shadow: var(--shadow-glow); }
+    .btn-primary:hover { background: var(--primary-hover); box-shadow: 0 16px 40px rgba(244, 196, 20, 0.4); }
+    .btn-dark { background: var(--text-main); color: var(--bg); }
+    .btn-dark:hover { background: var(--primary); color: var(--text-main); box-shadow: var(--shadow-md); }
+
+    .container { width: min(1280px, calc(100vw - 2rem)); margin: 0 auto; }
+    .section { padding: 8rem 0; position: relative; }
+    .bg-alt { background-color: var(--bg-alt); }
+
+    /* ==========================================================================
+       4. HEADER E MARQUEE
+       ========================================================================== */
+    .header-wrap { position: fixed; top: 1.5rem; left: 0; right: 0; z-index: 100; display: flex; justify-content: center; pointer-events: none; transition: transform 0.4s var(--ease); padding: 0 1rem; }
+    .header-wrap.hide { transform: translateY(-150%); }
+    .header { pointer-events: auto; display: flex; align-items: center; justify-content: space-between; width: min(1000px, 100%); background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(0,0,0,0.06); padding: 0.6rem 0.6rem 0.6rem 1.2rem; border-radius: var(--radius-pill); box-shadow: 0 8px 32px rgba(0,0,0,0.04); }
+    .logo { display: flex; align-items: center; gap: 0.8rem; font-family: 'Barlow Condensed'; font-weight: 800; font-size: 1.2rem; text-transform: uppercase; }
+    .logo img { width: 42px; height: 42px; border-radius: 50%; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a.link { font-weight: 700; font-size: 0.95rem; color: var(--text-muted); position: relative; }
+    .nav-links a.link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0%; height: 2px; background: var(--primary); transition: width 0.3s ease; }
+    .nav-links a.link:hover { color: var(--text-main); }
+    .nav-links a.link:hover::after { width: 100%; }
+    .nav-btn { background: var(--text-main); color: #fff; padding: 0.8rem 1.8rem; border-radius: var(--radius-pill); font-weight: 800; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+    .nav-btn:hover { background: var(--primary); color: var(--text-main); }
+    .menu-toggle { display: none; padding: 0.5rem; }
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    .marquee { background: var(--text-main); color: var(--bg); padding: 1.5rem 0; overflow: hidden; white-space: nowrap; display: flex; transform: rotate(-1deg) scale(1.02); z-index: 10; position: relative; }
+    .marquee-content { display: flex; font-family: 'Barlow Condensed'; font-size: 2.5rem; font-weight: 800; text-transform: uppercase; animation: scroll 20s linear infinite; gap: 3rem; }
+    .marquee-content span { display: flex; align-items: center; gap: 3rem; }
+    .marquee-content span::after { content: '•'; color: var(--primary); }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+    /* ==========================================================================
+       5. HERO SECTION (COM PARALLAX)
+       ========================================================================== */
+    .hero { padding-top: 180px; padding-bottom: 6rem; display: flex; align-items: center; position: relative;}
+    .hero::after { content: ''; position: absolute; top: -10%; right: -10%; width: 900px; height: 900px; background: radial-gradient(circle, var(--primary-glow) 0%, transparent 60%); z-index: -1; filter: blur(80px); }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; }
+    .hero-content p { max-width: 500px; margin-bottom: 3rem; font-size: clamp(1.1rem, 3vw, 1.25rem); }
+    .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .hero-visual { position: relative; }
+    /* Parallax container */
+    .hero-img-wrap { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); height: 600px; position: relative; }
+    .hero-img-wrap img { width: 100%; height: 120%; object-fit: cover; position: absolute; top: -10%; left: 0; transition: transform 0.1s linear; }
+    
+    .floating-card { position: absolute; bottom: 3rem; left: -3rem; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); padding: 1.2rem 1.5rem; border-radius: var(--radius-md); box-shadow: var(--shadow-md); display: flex; align-items: center; gap: 1rem; border: 1px solid var(--border); animation: float 5s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    .fc-icon { width: 48px; height: 48px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+    /* ==========================================================================
+       6. SEÇÕES DO MEIO
+       ========================================================================== */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+    .feature-card { padding: 3rem 2rem; background: var(--surface); border-radius: var(--radius-md); border: 1px solid var(--border); transition: var(--transition); display: flex; flex-direction: column; align-items: flex-start; }
+    .feature-card:hover { box-shadow: var(--shadow-md); transform: translateY(-8px); border-color: var(--primary); }
+    .icon-box { width: 64px; height: 64px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; transition: var(--transition); }
+    .feature-card:hover .icon-box { background: var(--primary); border-color: var(--primary); }
+
+    .gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.2rem; }
+    .g-item { position: relative; border-radius: var(--radius-md); overflow: hidden; }
+    .g-item img { width: 100%; height: 100%; transition: transform 0.8s var(--ease); }
+    .g-item:hover img { transform: scale(1.05); }
+    .g-1 { grid-column: 1 / 8; aspect-ratio: 16/9; }
+    .g-2 { grid-column: 8 / 13; aspect-ratio: 4/5; }
+    .g-3 { grid-column: 1 / 5; aspect-ratio: 1/1; }
+    .g-4 { grid-column: 5 / 9; aspect-ratio: 1/1; }
+    .g-5 { grid-column: 9 / 13; aspect-ratio: 1/1; }
+    .g-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 50%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; opacity: 0; transition: opacity 0.4s var(--ease); }
+    .g-item:hover .g-overlay { opacity: 1; }
+    .g-overlay h3 { color: #fff; margin: 0; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+    .g-overlay p { color: var(--primary); font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; margin:0;}
+
+    .modality-list { display: flex; flex-direction: column; margin-top: 3rem; }
+    .m-row { display: flex; align-items: center; justify-content: space-between; padding: 2.5rem 0; border-bottom: 1px solid var(--border); transition: var(--transition); }
+    .m-row:first-child { border-top: 1px solid var(--border); }
+    .m-info h3 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 0; color: var(--text-muted); transition: color 0.3s; }
+    .m-info p { margin: 0; font-weight: 600; font-size: 1.1rem; opacity: 0; transform: translateX(-20px); transition: all 0.4s var(--ease); }
+    .m-arrow { width: 60px; height: 60px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; transition: all 0.4s var(--ease); }
+    .m-row:hover .m-info h3 { color: var(--text-main); }
+    .m-row:hover .m-info p { opacity: 1; transform: translateX(0); }
+    .m-row:hover .m-arrow { background: var(--primary); border-color: var(--primary); }
+    .m-row:hover .m-arrow svg { transform: rotate(45deg); }
+
+    .app-section { background: var(--surface); border-radius: var(--radius-lg); padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .app-visual { display: flex; justify-content: center; position: relative; }
+    .app-visual::before { content: ''; position: absolute; width: 400px; height: 400px; background: var(--primary); border-radius: 50%; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.08; filter: blur(40px); }
+    .mockup { width: 100%; max-width: 300px; height: auto; aspect-ratio: 9/19; background: #fff; border: 10px solid var(--text-main); border-radius: 40px; position: relative; box-shadow: var(--shadow-lg); padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
+    .mockup::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 100px; height: 24px; background: var(--text-main); border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; }
+    .m-card { background: var(--bg-alt); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--border); }
+    .m-card-primary { background: var(--primary); border-color: var(--primary); }
+    .widget { position: absolute; background: #fff; padding: 0.8rem 1.2rem; border-radius: 20px; box-shadow: var(--shadow-md); border: 1px solid var(--border); font-weight: 800; font-size: 1rem; display: flex; align-items: center; gap: 0.8rem; z-index: 10; }
+    .widget-1 { top: 20%; right: -20px; animation: float 4s ease-in-out infinite; }
+    .widget-2 { bottom: 30%; left: -30px; animation: float 6s ease-in-out infinite reverse; }
+
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+    .review-card { padding: 2.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .review-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+    .stars { color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 2px;}
+    .review-text { font-style: italic; margin-bottom: 1.5rem; color: var(--text-main); }
+    .reviewer { font-weight: 800; font-size: 1rem; text-transform: uppercase; color: var(--text-muted); }
+
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    .plan-card { background: var(--surface); padding: 3rem 2rem; border-radius: var(--radius-md); border: 1px solid var(--border); text-align: center; transition: var(--transition); display: flex; flex-direction: column; }
+    .plan-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+    .plan-card.highlight { background: var(--text-main); color: var(--bg); border: none; box-shadow: var(--shadow-lg); }
+    .plan-card.highlight:hover { transform: translateY(-8px); }
+    .plan-card.highlight p { color: #a1a1aa; }
+
+    /* ==========================================================================
+       7. FAQ (PERGUNTAS FREQUENTES)
+       ========================================================================== */
+    .faq-grid { display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; transition: var(--transition); }
+    .faq-item:hover { border-color: var(--primary); }
+    .faq-question { width: 100%; text-align: left; padding: 1.5rem; font-weight: 700; font-size: 1.1rem; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; background: transparent; border: none; }
+    .faq-icon { font-size: 1.5rem; font-weight: 400; color: var(--primary); transition: transform 0.3s ease; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 1.5rem; color: var(--text-muted); }
+    .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 1.5rem; }
+    .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+    /* ==========================================================================
+       8. CONTATO E MAPA
+       ========================================================================== */
+    .contact-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; }
+    .contact-info { display: flex; flex-direction: column; align-items: flex-start; }
+    .contact-item { margin-bottom: 2rem; display: flex; gap: 1.2rem; align-items: flex-start; width: 100%; }
+    .ci-icon { width: 50px; height: 50px; background: var(--bg-alt); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid var(--border); }
+    .ci-icon svg { width: 22px; height: 22px; stroke: var(--text-main); fill: none; stroke-width: 1.5; }
+    .ci-text span { display: block; font-size: 0.85rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted); margin-bottom: 0.2rem; }
+    .ci-text strong { font-size: 1.15rem; font-weight: 700; color: var(--text-main); }
+    .map-wrap { border-radius: var(--radius-md); overflow: hidden; height: 100%; min-height: 400px; box-shadow: var(--shadow-md); display: flex; }
+    .map-wrap iframe { width: 100%; min-height: 400px; border: none; filter: grayscale(1) contrast(1.1); flex: 1; display: block; }
+
+    /* ==========================================================================
+       9. FOOTER E WHATSAPP
+       ========================================================================== */
+    .footer { background: var(--text-main); color: var(--bg); padding: 6rem 0 3rem; text-align: center; overflow: hidden; }
+    .footer-huge { font-family: 'Barlow Condensed'; font-size: clamp(4rem, 12vw, 14rem); font-weight: 800; line-height: 0.9; letter-spacing: -0.02em; margin-bottom: 3rem; color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.1); transition: color 0.5s; display: block; word-break: break-word; }
+    .footer-huge:hover { color: var(--primary); -webkit-text-stroke: 0; }
+    .f-brand { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .f-brand img { width: 40px; filter: grayscale(1); }
+
+    .wpp-btn { position: fixed; bottom: 2rem; right: 2rem; background: var(--wpp); color: #fff; display: flex; align-items: center; justify-content: center; gap: 0.8rem; padding: 1rem 1.5rem; border-radius: var(--radius-pill); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.9rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 90; transition: var(--transition); animation: pulse-wpp 2s infinite; }
+    .wpp-btn:hover { transform: translateY(-5px) scale(1.05); background: var(--wpp-hover); animation: none; }
+    .wpp-btn svg { width: 24px; height: 24px; fill: currentColor; }
+    @keyframes pulse-wpp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+    .lightbox { width: min(1000px, 95vw); padding: 0; border: none; border-radius: var(--radius-md); background: transparent; }
+    .lightbox::backdrop { background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); }
+    .lightbox img { width: 100%; max-height: 85vh; border-radius: var(--radius-md); object-fit: contain; }
+    .lightbox-close { position: absolute; top: -15px; right: -15px; width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: var(--text-main); font-weight: bold; font-size: 1rem; border: none; z-index: 10; transition: transform 0.3s; }
+    
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+
+    /* ==========================================================================
+       10. RESPONSIVIDADE TOTAL
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-grid, .app-section, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero { padding-top: 140px; text-align: center; }
+      .hero-content p { margin: 0 auto 2rem; }
+      .hero-actions { justify-content: center; }
+      .floating-card, .widget { display: none; }
+      .hero-img-wrap { height: 400px; }
+      .features-grid, .plans-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .g-1, .g-2, .g-3, .g-4, .g-5 { grid-column: span 6; aspect-ratio: 1/1; }
+      .app-section { padding: 4rem 2rem; }
+      .header { width: min(800px, calc(100vw - 2rem)); }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 4.5rem 0; }
+      .header-wrap { top: 0; padding: 0.5rem; width: 100%; }
+      .header { width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border); padding: 0.8rem 1rem; }
+      .nav-links { position: fixed; top: 75px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); flex-direction: column; padding: 2rem; border-bottom: 1px solid var(--border); border-radius: 0 0 24px 24px; box-shadow: var(--shadow-md); transform: translateY(-150%); transition: var(--transition); }
+      .nav-links.active { transform: translateY(0); }
+      .menu-toggle { display: block; }
+      .hero-img-wrap { height: 350px; }
+      .features-grid, .plans-grid, .reviews-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .feature-card { padding: 2rem 1.5rem; }
+      .g-1, .g-2, .g-3, .g-4, .g-5 { grid-column: span 12; }
+      .m-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 2rem 0; }
+      .m-arrow { display: none; }
+      .m-info p { opacity: 1; transform: none; font-size: 1rem; }
+      .contact-info { align-items: stretch; }
+      .btn { width: 100%; text-align: center; }
+      .hero-actions { flex-direction: column; width: 100%; }
+      .wpp-btn span { display: none; } 
+      .wpp-btn { padding: 1rem; bottom: 1.5rem; right: 1.5rem; border-radius: 50%; }
+      .faq-grid { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="loader-content">
+      <img src="Logo%20moderno%20Academia%20Olimpus.png" alt="Olimpus Loading">
+      <span>OLIMPUS</span>
+    </div>
+  </div>
+
+  <!-- CURSOR (Desktop) -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-follower" id="cursor-follower"></div>
+
+  <!-- HEADER -->
+  <div class="header-wrap" id="header-wrap">
+    <header class="header">
+      <a href="#" class="logo interactive">
+        <img src="Logo%20moderno%20Academia%20Olimpus.png" alt="Olimpus">
+        Olimpus
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#sobre" class="link interactive">Diferenciais</a>
+        <a href="#estrutura" class="link interactive">Estrutura</a>
+        <a href="#modalidades" class="link interactive">Aulas</a>
+        <a href="#planos" class="link interactive">Planos</a>
+        <a href="https://wa.me/551632533000" target="_blank" class="nav-btn interactive magnetic">Ligar Agora</a>
+      </nav>
+      <button class="menu-toggle interactive" id="menu-toggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </header>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="badge">Taquaritinga - SP</div>
+          <h1>O ambiente feito para o seu <span class="text-stroke">resultado</span></h1>
+          <p>Esqueça o básico. A Olimpus une estrutura de alto padrão, design sofisticado e acompanhamento real para quem exige excelência na hora de treinar.</p>
+          <div class="hero-actions">
+            <a href="#planos" class="btn btn-primary interactive magnetic">Ver Planos</a>
+            <a href="#estrutura" class="btn btn-dark interactive magnetic">Conhecer Espaço</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal delay-1">
+          <div class="hero-img-wrap interactive">
+            <img src="Academia%20Olimpus%20ao%20entardecer.png" alt="Fachada Olimpus" id="hero-parallax">
+          </div>
+          <div class="floating-card">
+            <div class="fc-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="fc-text">
+              <strong>Estrutura Premium</strong>
+              <span>100% Climatizado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LETREIRO (MARQUEE) -->
+    <div class="marquee">
+      <div class="marquee-content">
+        <span>Estrutura Premium</span><span>Ambiente Climatizado</span><span>Musculação de Alto Nível</span><span>Natação & Hidro</span><span>Studio de Bike Indoor</span><span>Resultados Reais</span>
+        <span>Estrutura Premium</span><span>Ambiente Climatizado</span><span>Musculação de Alto Nível</span><span>Natação & Hidro</span><span>Studio de Bike Indoor</span><span>Resultados Reais</span>
+      </div>
+    </div>
+
+    <!-- DIFERENCIAIS -->
+    <section class="section bg-alt" id="sobre">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="badge">Por que a Olimpus</div>
+          <h2>Detalhes que elevam o treino.</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card reveal interactive">
+            <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line></svg></div>
+            <h3>Amplo & Climatizado</h3>
+            <p>Treine com o máximo de conforto, sem aperto, em um ambiente com temperatura ideal o ano todo.</p>
+          </div>
+          <div class="feature-card reveal delay-1 interactive">
+            <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+            <h3>Piscina Coberta</h3>
+            <p>Natação e hidroginástica com conforto térmico e qualidade excepcional em qualquer estação.</p>
+          </div>
+          <div class="feature-card reveal delay-2 interactive">
+            <div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+            <h3>Profissionais Reais</h3>
+            <p>Equipe atenta no salão. Você nunca vai treinar sozinho ou sem orientação técnica adequada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="section" id="estrutura">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="badge">Tour Virtual</div>
+          <h2>A estrutura que impressiona.</h2>
+        </div>
+        <div class="gallery">
+          <div class="g-item g-1 reveal interactive" data-img="ChatGPT%20Image%2010%20de%20abr.%20de%202026,%2014_05_26.png"><img src="ChatGPT%20Image%2010%20de%20abr.%20de%202026,%2014_05_26.png" alt="Musculação" loading="lazy"><div class="g-overlay"><p>01</p><h3>Área de Musculação</h3></div></div>
+          <div class="g-item g-2 reveal delay-1 interactive" data-img="ChatGPT%20Image%2010%20de%20abr.%20de%202026,%2014_05_09.png"><img src="ChatGPT%20Image%2010%20de%20abr.%20de%202026,%2014_05_09.png" alt="Piscina Coberta" loading="lazy"><div class="g-overlay"><p>02</p><h3>Piscina Coberta</h3></div></div>
+          <div class="g-item g-3 reveal interactive" data-img="ChatGPT%20Image%2010%20de%20abr.%20de%202026,%2014_05_17.png"><img src="ChatGPT%20Image%2010%20de%20abr.%20de%202026,%2014_05_17.png" alt="Studio de Bike" loading="lazy"><div class="g-overlay"><p>03</p><h3>Bike Indoor</h3></div></div>
+          <div class="g-item g-4 reveal delay-1 interactive" data-img="ChatGPT%20Image%2010%20de%20abr.%20de%202026,%2014_05_40.png"><img src="ChatGPT%20Image%2010%20de%20abr.%20de%202026,%2014_05_40.png" alt="Área Funcional" loading="lazy"><div class="g-overlay"><p>04</p><h3>Campo de Grama</h3></div></div>
+          <div class="g-item g-5 reveal delay-2 interactive" data-img="Academia%20Olimpus%20ao%20entardecer.png"><img src="Academia%20Olimpus%20ao%20entardecer.png" alt="Fachada" loading="lazy"><div class="g-overlay"><p>05</p><h3>Fachada Premium</h3></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROVA SOCIAL -->
+    <section class="section bg-alt">
+      <div class="container">
+        <div class="section-header reveal" style="text-align: center; margin: 0 auto 3rem;">
+          <div class="badge">Feedback</div>
+          <h2>O que dizem sobre nós.</h2>
+        </div>
+        <div class="reviews-grid">
+          <div class="review-card reveal interactive">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"A melhor estrutura da cidade. Equipamentos novos, ambiente todo climatizado e professores que realmente acompanham o treino."</p>
+            <div class="reviewer">João Paulo</div>
+          </div>
+          <div class="review-card reveal delay-1 interactive">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"A piscina coberta é fantástica. Faço natação e o ambiente é perfeito. O aplicativo também ajuda muito a não perder o foco."</p>
+            <div class="reviewer">Mariana Costa</div>
+          </div>
+          <div class="review-card reveal delay-2 interactive">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Fácil adesão com TotalPass. As aulas de Bike Indoor são super animadas, studio climatizado e som de primeira!"</p>
+            <div class="reviewer">Rafael Almeida</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODALIDADES -->
+    <section class="section" id="modalidades">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="badge">Grade Completa</div>
+          <h2>Escolha o seu foco.</h2>
+        </div>
+        <div class="modality-list">
+          <div class="m-row reveal interactive"><div class="m-info"><h3>Musculação</h3><p>Base sólida para hipertrofia, fortalecimento e saúde geral.</p></div><div class="m-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
+          <div class="m-row reveal interactive"><div class="m-info"><h3>Natação & Hidro</h3><p>Modalidades aquáticas para baixo impacto e queima calórica.</p></div><div class="m-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
+          <div class="m-row reveal interactive"><div class="m-info"><h3>Bike Indoor</h3><p>Studio imersivo com ritmo intenso e cardio elevado.</p></div><div class="m-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
+          <div class="m-row reveal interactive"><div class="m-info"><h3>Aulas Coletivas</h3><p>Jump, Pump, Yoga e Funcional para não cair na rotina.</p></div><div class="m-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APP SECTION -->
+    <section class="section bg-alt">
+      <div class="container">
+        <div class="app-section reveal">
+          <div>
+            <div class="badge">Tecnologia Integrada</div>
+            <h2>Sua rotina na<br>palma da mão.</h2>
+            <p style="margin-bottom: 2rem;">Nosso aplicativo exclusivo organiza suas séries, cargas e histórico com um design tão moderno quanto a academia.</p>
+            <a href="#contato" class="btn btn-dark interactive magnetic">Conheça a Olimpus</a>
+          </div>
+          <div class="app-visual">
+            <div class="widget widget-1">🔥 500 kcal</div>
+            <div class="widget widget-2">⏱️ 45 min</div>
+            <div class="mockup interactive">
+              <div class="phone-screen">
+                <div style="padding-top: 1rem;"><h3 style="font-family:'Barlow Condensed'; font-size:2.2rem; margin:0;">Olá, Aluno</h3><p style="font-size:0.95rem;">Pronto para treinar?</p></div>
+                <div class="m-card m-card-primary"><h4>Treino A • Peito/Tríceps</h4><p style="font-size:0.85rem; margin-top:0.3rem;">6 Exercícios • 45 min</p></div>
+                <div class="m-card"><h4>Próxima Aula</h4><p style="font-size:0.85rem; margin-top:0.3rem;">Bike Indoor - 19:00</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANOS -->
+    <section class="section" id="planos">
+      <div class="container">
+        <div class="section-header reveal" style="margin: 0 auto 3rem; text-align: center;">
+          <div class="badge">Invista em Você</div>
+          <h2>Planos Inteligentes.</h2>
+        </div>
+        <div class="plans-grid">
+          <div class="plan-card reveal interactive">
+            <h3 style="color:var(--text-muted);">Mensal</h3>
+            <p>Acesso total para iniciar a sua experiência de forma flexível.</p>
+            <div style="margin-top: auto; padding-top: 2rem;"><a href="https://wa.me/551632533000" target="_blank" class="btn btn-dark magnetic" style="width:100%;">Consultar</a></div>
+          </div>
+          <div class="plan-card highlight reveal delay-1 interactive">
+            <h3 style="color:var(--primary);">Semestral</h3>
+            <p>O equilíbrio perfeito para quem busca constância e resultado visível.</p>
+            <div style="margin-top: auto; padding-top: 2rem;"><a href="https://wa.me/551632533000" target="_blank" class="btn btn-primary magnetic" style="width:100%;">Assinar Plano</a></div>
+          </div>
+          <div class="plan-card reveal delay-2 interactive">
+            <h3 style="color:var(--text-muted);">Anual</h3>
+            <p>Para quem tem o treino como estilo de vida. Melhor custo-benefício.</p>
+            <div style="margin-top: auto; padding-top: 2rem;"><a href="https://wa.me/551632533000" target="_blank" class="btn btn-dark magnetic" style="width:100%;">Consultar</a></div>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top: 3rem; display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap;" class="reveal">
+          <span style="font-weight: 800; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Aceitamos TotalPass</span>
+          <span style="font-weight: 800; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Aceitamos Wellhub</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section bg-alt">
+      <div class="container">
+        <div class="section-header reveal" style="text-align: center; margin: 0 auto 2rem;">
+          <div class="badge">Dúvidas Frequentes</div>
+          <h2>Perguntas Comuns.</h2>
+        </div>
+        <div class="faq-grid reveal">
+          <button class="faq-item interactive" onclick="toggleFaq(this)">
+            <div class="faq-question">Quais horários a academia funciona? <span class="faq-icon">+</span></div>
+            <div class="faq-answer"><p>Nós funcionamos de segunda a sexta-feira das 06:00 às 22:00, e aos sábados e domingos em horários especiais. Consulte-nos no WhatsApp para feriados.</p></div>
+          </button>
+          <button class="faq-item interactive" onclick="toggleFaq(this)">
+            <div class="faq-question">Vocês aceitam Gympass/Wellhub ou TotalPass? <span class="faq-icon">+</span></div>
+            <div class="faq-answer"><p>Sim! Somos credenciados em ambas as plataformas. Basta fazer o check-in na recepção pelo seu aplicativo no momento da entrada.</p></div>
+          </button>
+          <button class="faq-item interactive" onclick="toggleFaq(this)">
+            <div class="faq-question">Tem taxa de matrícula? <span class="faq-icon">+</span></div>
+            <div class="faq-answer"><p>Não! Na Academia Olimpus você não paga nenhuma taxa de matrícula. É só escolher o seu plano e começar a treinar sem custos extras.</p></div>
+          </button>
+          <button class="faq-item interactive" onclick="toggleFaq(this)">
+            <div class="faq-question">Os professores montam meu treino? <span class="faq-icon">+</span></div>
+            <div class="faq-answer"><p>Com certeza. Temos professores em todos os horários no salão que irão montar, explicar e acompanhar toda a execução do seu treino, que ficará salvo no nosso App exclusivo.</p></div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO E MAPA -->
+    <section class="section" id="contato">
+      <div class="container contact-grid">
+        <div class="contact-info reveal">
+          <div class="badge">Visite-nos</div>
+          <h2>Venha Treinar.</h2>
+          <p style="margin-bottom: 3rem;">Estrutura 100% climatizada aguardando por você no coração de Taquaritinga.</p>
+          
+          <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div class="ci-text"><span>Endereço</span><strong>Av. Saverio Salvagni, 150<br>Jardim Bela Vista, SP</strong></div></div>
+          <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div><div class="ci-text"><span>Telefone</span><strong>(16) 3253-3000</strong></div></div>
+          <div class="contact-item" style="margin-bottom: 3rem;"><div class="ci-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div><div class="ci-text"><span>Horários</span><strong>Aberto até as 22h00</strong></div></div>
+          
+          <a href="https://www.google.com/maps/search/?api=1&query=Av.%20Saverio%20Salvagni%2C%20150%20-%20Jardim%20Bela%20Vista" target="_blank" class="btn btn-primary interactive magnetic">Traçar Rota no GPS</a>
+        </div>
+        <div class="map-wrap reveal delay-1 interactive">
+          <iframe src="https://www.google.com/maps?q=Av.%20Saverio%20Salvagni,%20150%20-%20Jardim%20Bela%20Vista,%20Taquaritinga%20-%20SP,%2015905-028&output=embed" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container reveal">
+      <div class="footer-huge interactive">OLIMPUS<br>ACADEMIA</div>
+      <div class="f-brand">
+        <img src="Logo%20moderno%20Academia%20Olimpus.png" alt="Olimpus">
+        <span>ACADEMIA OLIMPUS</span>
+      </div>
+      <p style="margin: 0 auto 3rem; max-width: 500px; color:#888;">Estrutura premium, ambiente 100% climatizado e as melhores modalidades de Taquaritinga-SP para a sua evolução constante.</p>
+      <div class="footer-links">
+        <a href="#sobre" class="interactive">Diferenciais</a>
+        <a href="#estrutura" class="interactive">Estrutura</a>
+        <a href="#modalidades" class="interactive">Modalidades</a>
+        <a href="#planos" class="interactive">Planos</a>
+      </div>
+      <p style="font-size: 0.85rem; margin-top: 4rem; opacity: 0.3;">&copy; 2026 Academia Olimpus. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a href="https://wa.me/551632533000" target="_blank" class="wpp-btn interactive magnetic">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    <span>Fale com a gente</span>
+  </a>
+
+  <!-- LIGHTBOX -->
+  <dialog class="lightbox" id="lightbox">
+    <button class="lightbox-close interactive" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt="Galeria">
+  </dialog>
+
+  <!-- SCRIPTS -->
+  <script>
+    // PRELOADER
+    window.addEventListener('load', () => { setTimeout(() => { document.getElementById('preloader').classList.add('hide'); }, 500); });
+
+    // HEADER SMART E PARALLAX HERO
+    const headerWrap = document.getElementById('header-wrap');
+    const heroImg = document.getElementById('hero-parallax');
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      
+      if (window.innerWidth > 768) {
+        if (currentScrollY > lastScrollY && currentScrollY > 100) headerWrap.classList.add('hide');
+        else headerWrap.classList.remove('hide');
+      }
+      
+      if (window.innerWidth > 768 && heroImg && currentScrollY < 1000) {
+        heroImg.style.transform = `translateY(${currentScrollY * 0.15}px)`;
+      }
+      
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+
+    // CURSOR E MAGNETIC
+    const cursor = document.getElementById('cursor');
+    const follower = document.getElementById('cursor-follower');
+    let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
+
+    if (window.matchMedia("(pointer: fine)").matches) {
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX; mouseY = e.clientY;
+        cursor.style.left = `${mouseX}px`; cursor.style.top = `${mouseY}px`;
+      });
+      function loop() {
+        posX += (mouseX - posX) * 0.15; posY += (mouseY - posY) * 0.15;
+        follower.style.left = `${posX}px`; follower.style.top = `${posY}px`;
+        requestAnimationFrame(loop);
+      }
+      loop();
+      document.querySelectorAll('.interactive, a, button, .g-item, .faq-item').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+      document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - (rect.width / 2);
+          const y = e.clientY - rect.top - (rect.height / 2);
+          btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        btn.addEventListener('mouseleave', () => btn.style.transform = `translate(0px, 0px)`);
+      });
+    }
+
+    // MENU MOBILE
+    const menuBtn = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+
+    // REVEAL
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // LIGHTBOX
+    const lightbox = document.getElementById('lightbox');
+    const lboxImg = document.getElementById('lightbox-img');
+    const lboxClose = document.getElementById('lightbox-close');
+    document.querySelectorAll('.g-item').forEach(item => {
+      item.addEventListener('click', () => { lboxImg.src = item.getAttribute('data-img'); lightbox.showModal(); });
+    });
+    lboxClose.addEventListener('click', () => lightbox.close());
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.close(); });
+
+    // FAQ SCRIPT
+    function toggleFaq(element) {
+      document.querySelectorAll('.faq-item').forEach(item => {
+        if(item !== element) item.classList.remove('active');
+      });
+      element.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
