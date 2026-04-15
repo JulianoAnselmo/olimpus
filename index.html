@@ -42,8 +42,9 @@
       --ease: cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { overflow-x: hidden; width: 100%; }
+    .custom-cursor-active * { cursor: none !important; }
     html { scroll-behavior: smooth; scroll-padding-top: 100px; }
     body { font-family: 'Manrope', sans-serif; color: var(--text-main); background-color: var(--bg); line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
@@ -69,8 +70,8 @@
     .loader-content span { font-family: 'Barlow Condensed'; font-size: 2rem; font-weight: 800; letter-spacing: 0.1em; color: var(--text-main); }
     @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.95); } }
 
-    .custom-cursor { position: fixed; top: 0; left: 0; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s var(--ease); mix-blend-mode: multiply; }
-    .custom-cursor-follower { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border: 1px solid var(--primary); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: transform 0.1s linear, width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.3s var(--ease); }
+    .custom-cursor { position: fixed; top: 0; left: 0; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; pointer-events: none; z-index: 999999; transform: translate(-50%, -50%); transition: width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s var(--ease); mix-blend-mode: multiply; }
+    .custom-cursor-follower { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border: 1px solid var(--primary); border-radius: 50%; pointer-events: none; z-index: 999998; transform: translate(-50%, -50%); transition: transform 0.1s linear, width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.3s var(--ease); }
     body.cursor-hover .custom-cursor { width: 50px; height: 50px; background: rgba(244, 196, 20, 0.4); mix-blend-mode: normal; }
     body.cursor-hover .custom-cursor-follower { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
 
@@ -239,10 +240,215 @@
     .wpp-btn svg { width: 24px; height: 24px; fill: currentColor; }
     @keyframes pulse-wpp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
-    .lightbox { width: min(1000px, 95vw); padding: 0; border: none; border-radius: var(--radius-md); background: transparent; }
-    .lightbox::backdrop { background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); }
-    .lightbox img { width: 100%; max-height: 85vh; border-radius: var(--radius-md); object-fit: contain; }
-    .lightbox-close { position: absolute; top: -15px; right: -15px; width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: var(--text-main); font-weight: bold; font-size: 1rem; border: none; z-index: 10; transition: transform 0.3s; }
+    /* ==========================================================================
+       12. MODAL AULA EXPERIMENTAL
+       ========================================================================== */
+    .modal-aula {
+      width: min(1040px, 96vw);
+      max-height: 92vh;
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-radius: 28px;
+      background: transparent;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9000;
+      overflow: hidden;
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45);
+    }
+    .modal-aula::backdrop { background: rgba(7, 9, 12, 0.76); backdrop-filter: blur(8px); }
+    body.native-cursor-mode * { cursor: auto !important; }
+    body.native-cursor-mode .custom-cursor,
+    body.native-cursor-mode .custom-cursor-follower { opacity: 0 !important; }
+
+    .modal-content {
+      display: grid;
+      grid-template-columns: minmax(250px, 0.9fr) minmax(0, 1.1fr);
+      height: min(88vh, 780px);
+      background: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 28px;
+      overflow: hidden;
+    }
+    .modal-benefits {
+      padding: 2.3rem 2rem;
+      color: #111827;
+      border-right: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      background: radial-gradient(circle at top right, rgba(244, 196, 20, 0.5) 0%, rgba(244, 196, 20, 0.08) 58%), linear-gradient(165deg, #fff7d6 0%, #fff1bf 46%, #fff8dd 100%);
+    }
+    .modal-kicker {
+      width: fit-content;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #8a6400;
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid rgba(138, 100, 0, 0.35);
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      box-shadow: 0 6px 18px rgba(138, 100, 0, 0.12);
+    }
+    .modal-benefits h3 {
+      font-size: clamp(2rem, 2.4vw, 2.8rem);
+      line-height: 0.95;
+      color: #0f172a;
+      margin: 0;
+    }
+    .modal-benefits p {
+      color: #1f2937;
+      font-size: 1rem;
+      margin: 0;
+      max-width: 30ch;
+    }
+    .modal-benefit-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin: 0; padding: 0; }
+    .modal-benefit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      color: #111827;
+      font-weight: 600;
+      font-size: 0.95rem;
+      line-height: 1.35;
+    }
+    .modal-benefit-list li::before {
+      content: '✓';
+      color: #b98500;
+      font-weight: 900;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+    .modal-assurance {
+      margin-top: auto;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 250, 235, 0.95));
+      border: 1px solid rgba(185, 133, 0, 0.35);
+      border-left: 4px solid #b98500;
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      color: #1f2937;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      box-shadow: 0 10px 26px rgba(17, 24, 39, 0.08);
+    }
+
+    .modal-form-wrap {
+      padding: 2rem 2rem 1.8rem;
+      background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+      overflow-y: auto;
+      min-height: 0;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.1rem;
+      border: 1px solid var(--border);
+      background: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+    }
+    .modal-close:hover { transform: rotate(90deg); background: #f3f4f6; }
+    .modal-header { padding-right: 2.8rem; margin-bottom: 1.1rem; }
+    .modal-header h2 { font-size: clamp(2rem, 2vw, 2.4rem); margin-bottom: 0.5rem; }
+    .modal-header p { color: var(--text-muted); font-size: 0.98rem; max-width: 56ch; }
+
+    .form-aula { display: flex; flex-direction: column; gap: 0.95rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group label { font-size: 0.85rem; font-weight: 800; color: var(--text-main); letter-spacing: 0.02em; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.83rem 0.9rem;
+      border: 1px solid #d5d9de;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      background: #fff;
+      transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+    }
+    .form-group textarea { min-height: 84px; resize: vertical; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #d3ab0c;
+      box-shadow: 0 0 0 4px rgba(244, 196, 20, 0.18);
+      background: #fffef7;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #9aa3af; }
+
+    .form-checkbox {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 0.55rem;
+      align-items: start;
+      font-size: 0.84rem;
+      color: #4b5563;
+      line-height: 1.35;
+      margin-top: 0.1rem;
+    }
+    .form-checkbox input { margin-top: 0.12rem; accent-color: #f4c414; }
+
+    .modal-submit {
+      width: 100%;
+      margin-top: 0.35rem;
+      border: none;
+      cursor: pointer;
+    }
+    .form-helper { color: #6b7280; font-size: 0.8rem; text-align: center; margin-top: 0.1rem; }
+
+    #form-success {
+      display: none;
+      min-height: 100%;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2.6rem 1.5rem;
+    }
+    .success-box {
+      max-width: 460px;
+      margin: 0 auto;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: var(--shadow-sm);
+      padding: 1.6rem 1.2rem;
+    }
+    .success-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #0f5132;
+      background: #d1fae5;
+      margin-bottom: 0.85rem;
+    }
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
     
     .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -263,6 +469,24 @@
       .g-1, .g-2, .g-3, .g-4, .g-5 { grid-column: span 6; aspect-ratio: 1/1; }
       .app-section { padding: 4rem 2rem; }
       .header { width: min(800px, calc(100vw - 2rem)); }
+
+      .modal-aula { width: min(940px, 96vw); }
+      .modal-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto minmax(0, 1fr);
+        height: min(92vh, 860px);
+      }
+      .modal-benefits { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.16); padding: 1.6rem 1.4rem; gap: 1rem; }
+      .modal-benefits h3 { font-size: clamp(1.8rem, 4vw, 2.3rem); }
+      .modal-benefits p { max-width: 100%; }
+      .modal-benefit-list { gap: 0.6rem; }
+      .modal-assurance { margin-top: 0.4rem; }
+      .modal-form-wrap {
+        max-height: none;
+        min-height: 0;
+        overflow-y: auto;
+        padding: 1.5rem 1.4rem 1.4rem;
+      }
     }
 
     @media (max-width: 768px) {
@@ -327,6 +551,55 @@
       
       .app-section { padding: 3rem 1.5rem; }
       .app-visual::before { width: 250px; height: 250px; }
+
+      .modal-aula {
+        width: 100vw;
+        max-width: 100vw;
+        height: 100dvh;
+        max-height: 100dvh;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+      }
+      .modal-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto minmax(0, 1fr);
+        border-radius: 0;
+        height: 100%;
+        background: #fff;
+      }
+      .modal-benefits {
+        padding: 1.4rem 1rem;
+        border-bottom: 1px solid #1f2937;
+        border-right: none;
+        gap: 0.8rem;
+      }
+      .modal-benefits h3 { font-size: 1.9rem; }
+      .modal-benefits p,
+      .modal-benefit-list li,
+      .modal-assurance { font-size: 0.9rem; }
+      .modal-form-wrap {
+        max-height: none;
+        min-height: 0;
+        overflow-y: auto;
+        padding: 1.2rem 1rem 1.4rem;
+      }
+      .modal-header { margin-bottom: 0.9rem; padding-right: 2.4rem; }
+      .modal-header h2 { font-size: 1.8rem; margin-bottom: 0.35rem; }
+      .form-row { grid-template-columns: 1fr; gap: 0.75rem; }
+      .form-aula { gap: 0.75rem; }
+      .form-group input,
+      .form-group select,
+      .form-group textarea { font-size: 16px; }
+      .modal-close {
+        top: 0.8rem;
+        right: 0.8rem;
+        width: 36px;
+        height: 36px;
+      }
+      .success-box { padding: 1.2rem 1rem; }
     }
   </style>
 </head>
@@ -356,7 +629,7 @@
         <a href="#estrutura" class="link interactive">Estrutura</a>
         <a href="#modalidades" class="link interactive">Aulas</a>
         <a href="#planos" class="link interactive">Planos</a>
-        <a href="https://wa.me/551632533000" target="_blank" class="nav-btn interactive magnetic">Ligar Agora</a>
+        <button id="open-modal-cta" class="nav-btn interactive magnetic">Agende uma aula experimental</button>
       </nav>
       <button class="menu-toggle interactive" id="menu-toggle">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -374,7 +647,7 @@
           <p>Esqueça o básico. A Olimpus une estrutura de alto padrão, design sofisticado e acompanhamento real para quem exige excelência na hora de treinar.</p>
           <div class="hero-actions">
             <a href="#planos" class="btn btn-primary interactive magnetic">Ver Planos</a>
-            <a href="#estrutura" class="btn btn-dark interactive magnetic">Conhecer Espaço</a>
+            <button id="open-modal-cta-hero" class="btn btn-dark interactive magnetic">Agende uma aula experimental</button>
           </div>
         </div>
         <div class="hero-visual reveal delay-1">
@@ -645,6 +918,135 @@
     <img id="lightbox-img" src="" alt="Galeria">
   </dialog>
 
+  <!-- MODAL AULA EXPERIMENTAL -->
+  <dialog id="modal-aula" class="modal-aula">
+    <div class="modal-content">
+      <aside class="modal-benefits">
+        <span class="modal-kicker">Aula experimental</span>
+        <h3>Experimente a Olimpus sem compromisso.</h3>
+        <p>Preencha o formulario e nossa equipe confirma o melhor dia e horario para voce com uma triagem inicial simples.</p>
+        <ul class="modal-benefit-list">
+          <li>Conhecer a estrutura premium da academia.</li>
+          <li>Entender a modalidade ideal para seu objetivo.</li>
+          <li>Experimentar o ambiente antes de se matricular.</li>
+        </ul>
+        <div class="modal-assurance">Atendimento rapido, humano e focado no seu perfil.</div>
+      </aside>
+
+      <section class="modal-form-wrap">
+      <button class="modal-close" id="modal-close" aria-label="Fechar modal">✕</button>
+      <div class="modal-header">
+        <h2>Agende sua aula experimental</h2>
+        <p>Sem compromisso. Nossa equipe entrara em contato para confirmar o melhor dia e horario.</p>
+      </div>
+      <form id="form-aula" class="form-aula" novalidate>
+        <input class="hp-field" type="text" name="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        
+        <div class="form-group">
+          <label for="nome">Nome completo*</label>
+          <input id="nome" type="text" name="nome" required placeholder="Seu nome completo">
+        </div>
+        
+        <div class="form-group">
+          <label for="wpp-mask">WhatsApp*</label>
+          <input type="tel" name="whatsapp" required placeholder="(00) 00000-0000" id="wpp-mask" inputmode="numeric">
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail*</label>
+          <input id="email" type="email" name="email" required placeholder="seu@email.com">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="idade">Idade*</label>
+                <input id="idade" type="number" name="idade" required placeholder="00" min="12" max="100">
+            </div>
+            <div class="form-group">
+                <label for="modalidade">Modalidade de interesse*</label>
+                <select id="modalidade" name="modalidade" required>
+                    <option value="">Selecione</option>
+                    <option value="musculacao">Musculação</option>
+                    <option value="natacao">Natação/Hidro</option>
+                    <option value="bike">Bike Indoor</option>
+                    <option value="coletivas">Aulas Coletivas</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="dia">Melhor dia para aula*</label>
+                <select id="dia" name="dia" required>
+                    <option value="">Selecione</option>
+                    <option value="seg">Segunda</option>
+                    <option value="ter">Terça</option>
+                    <option value="qua">Quarta</option>
+                    <option value="qui">Quinta</option>
+                    <option value="sex">Sexta</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="horario">Melhor horario*</label>
+                <input id="horario" type="time" name="horario" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label for="objetivo">Objetivo principal*</label>
+          <input id="objetivo" type="text" name="objetivo" required placeholder="Ex: Emagrecer, ganhar massa, condicionamento...">
+        </div>
+
+        <div class="form-group">
+            <label for="experiencia">Ja treinou antes?*</label>
+            <select id="experiencia" name="experiencia" required>
+                <option value="">Selecione</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+                <option value="voltando">Estou voltando agora</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="restricao">Possui restricao fisica, lesao ou condicao de saude?*</label>
+            <textarea id="restricao" name="restricao" required placeholder="Descreva brevemente para adaptarmos sua experiencia."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="origem">Como conheceu a academia?</label>
+          <input id="origem" type="text" name="origem" placeholder="Ex: Instagram, indicacao, Google...">
+        </div>
+
+        <div class="form-group">
+            <label for="obs">Observacoes adicionais</label>
+            <textarea id="obs" name="obs" placeholder="Se desejar, inclua observacoes importantes."></textarea>
+        </div>
+
+        <div class="form-checkbox">
+            <input type="checkbox" name="consentimento" required id="consent">
+            <label for="consent">Concordo com a política de privacidade e LGPD.*</label>
+        </div>
+
+        <div class="form-checkbox">
+            <input type="checkbox" name="aceitaWpp" required id="aceita">
+            <label for="aceita">Autorizo contato via WhatsApp.*</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary modal-submit">Agende uma aula experimental</button>
+        <p class="form-helper">Ao enviar, abriremos o WhatsApp da academia com sua solicitacao pronta.</p>
+      </form>
+      <div id="form-success" aria-live="polite">
+        <div class="success-box">
+        <div class="success-icon">✓</div>
+        <h3>Recebemos sua solicitacao de aula experimental.</h3>
+        <p>Nossa equipe entrara em contato em breve para confirmar o melhor dia e horario.</p>
+        <button class="btn btn-dark" id="close-success">Fechar</button>
+        </div>
+      </div>
+      </section>
+    </div>
+  </dialog>
+
   <!-- SCRIPTS -->
   <script>
     // PRELOADER
@@ -676,6 +1078,7 @@
     let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
 
     if (window.matchMedia("(pointer: fine)").matches) {
+      document.body.classList.add('custom-cursor-active');
       document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX; mouseY = e.clientY;
         cursor.style.left = `${mouseX}px`; cursor.style.top = `${mouseY}px`;
@@ -732,6 +1135,71 @@
       });
       element.classList.toggle('active');
     }
+
+    // MODAL AULA
+    const modalAula = document.getElementById('modal-aula');
+    const formAula = document.getElementById('form-aula');
+    const formSuccess = document.getElementById('form-success');
+
+    document.querySelectorAll('#open-modal-cta, #open-modal-cta-hero').forEach(btn => {
+        btn.addEventListener('click', () => {
+            modalAula.showModal();
+            document.body.classList.add('native-cursor-mode');
+            formAula.style.display = 'flex';
+            formSuccess.style.display = 'none';
+        });
+    });
+    document.getElementById('modal-close').addEventListener('click', () => modalAula.close());
+    modalAula.addEventListener('click', (e) => {
+        if (e.target === modalAula) modalAula.close();
+    });
+    modalAula.addEventListener('close', () => {
+        document.body.classList.remove('native-cursor-mode');
+    });
+    document.getElementById('close-success').addEventListener('click', () => { modalAula.close(); formAula.reset(); formAula.style.display = 'flex'; formSuccess.style.display = 'none'; });
+
+    // Máscara WPP
+    const wppInput = document.getElementById('wpp-mask');
+    wppInput.addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '');
+        v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
+        v = v.replace(/(\d)(\d{4})$/, '$1-$2');
+        e.target.value = v.substring(0, 15);
+    });
+
+    // Submissão
+    formAula.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(formAula);
+        const data = Object.fromEntries(formData.entries());
+        
+        if (data.honeypot) return; // Anti-spam
+
+        // Constrói a mensagem para o WhatsApp
+        const mensagem = `Olá! Gostaria de agendar uma aula experimental na Academia Olimpus.%0A%0A` +
+                       `*Nome:* ${data.nome}%0A` +
+                       `*Idade:* ${data.idade}%0A` +
+                       `*Modalidade:* ${data.modalidade}%0A` +
+                       `*Dia Preferencial:* ${data.dia}%0A` +
+                       `*Horário Preferencial:* ${data.horario}%0A` +
+                       `*Objetivo:* ${data.objetivo}%0A` +
+                       `*Já treinou antes?* ${data.experiencia}%0A` +
+                       `*Restrição/Saúde:* ${data.restricao}%0A` +
+                       (data.origem ? `*Como conheceu:* ${data.origem}%0A` : '') +
+                       (data.obs ? `*Observações:* ${data.obs}` : '');
+
+        const numero = "551632533000"; // Número da academia
+        const url = `https://wa.me/${numero}?text=${mensagem}`;
+        
+        // Exibe mensagem de sucesso
+        formAula.style.display = 'none';
+        formSuccess.style.display = 'block';
+
+        // Redireciona para o WhatsApp após um breve intervalo para o usuário ler a confirmação
+        setTimeout(() => {
+            window.open(url, '_blank');
+        }, 1500);
+    });
   </script>
 </body>
 </html>
