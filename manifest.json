@@ -1,0 +1,26 @@
+{
+  "name": "Academia Olimpus",
+  "short_name": "Olimpus",
+  "description": "Academia premium em Taquaritinga-SP. Musculação, piscina coberta, bike indoor e aulas coletivas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#F4C41F",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "imagens/logo.png", "sizes": "any", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "categories": ["sports", "health", "fitness"],
+  "shortcuts": [
+    {
+      "name": "Agendar aula experimental",
+      "url": "/?modal=aula",
+      "description": "Agende sua aula gratuita na Olimpus"
+    },
+    {
+      "name": "WhatsApp",
+      "url": "https://wa.me/551632533000",
+      "description": "Fale conosco pelo WhatsApp"
+    }
+  ]
+}

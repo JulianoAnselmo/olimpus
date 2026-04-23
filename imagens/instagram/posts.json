@@ -1,0 +1,12 @@
+{
+  "profile": "academiaolimpustaq",
+  "updatedAt": "2026-04-22T00:00:00.000Z",
+  "posts": [
+    { "image": "imagens/academia.webp", "postUrl": "https://www.instagram.com/academiaolimpustaq/", "alt": "Área de musculação Olimpus", "index": 1 },
+    { "image": "imagens/piscina.webp", "postUrl": "https://www.instagram.com/academiaolimpustaq/", "alt": "Piscina coberta aquecida", "index": 2 },
+    { "image": "imagens/bikes.webp", "postUrl": "https://www.instagram.com/academiaolimpustaq/", "alt": "Studio de bike indoor", "index": 3 },
+    { "image": "imagens/cardio.webp", "postUrl": "https://www.instagram.com/academiaolimpustaq/", "alt": "Área cardiovascular", "index": 4 },
+    { "image": "imagens/campo.webp", "postUrl": "https://www.instagram.com/academiaolimpustaq/", "alt": "Campo para treino funcional", "index": 5 },
+    { "image": "imagens/Academia%20Olimpus%20ao%20entardecer.webp", "postUrl": "https://www.instagram.com/academiaolimpustaq/", "alt": "Fachada Academia Olimpus", "index": 6 }
+  ]
+}
