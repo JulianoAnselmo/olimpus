@@ -8,7 +8,7 @@
   "theme_color": "#F4C41F",
   "lang": "pt-BR",
   "icons": [
-    { "src": "imagens/logo.png", "sizes": "any", "type": "image/png", "purpose": "any maskable" }
+    { "src": "imagens/logo.webp", "sizes": "any", "type": "image/png", "purpose": "any maskable" }
   ],
   "categories": ["sports", "health", "fitness"],
   "shortcuts": [
