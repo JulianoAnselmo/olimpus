@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://olimpustaquaritinga.com.br/sitemap.xml
+Sitemap: https://academiaolimpus.com.br/sitemap.xml
