@@ -1927,14 +1927,14 @@
 
     // MENU MOBILE
     const menuBtn = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
+    const navMobile = document.getElementById('nav-links');
     menuBtn.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('active');
+      const open = navMobile.classList.toggle('active');
       menuBtn.setAttribute('aria-expanded', String(open));
       menuBtn.setAttribute('aria-label', open ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
     });
-    navLinks.querySelectorAll('a, button').forEach(link => link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
+    navMobile.querySelectorAll('a, button').forEach(link => link.addEventListener('click', () => {
+      navMobile.classList.remove('active');
       menuBtn.setAttribute('aria-expanded', 'false');
       menuBtn.setAttribute('aria-label', 'Abrir menu de navegação');
     }));
