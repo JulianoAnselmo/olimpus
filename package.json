@@ -1,0 +1,9 @@
+{
+  "name": "academia-olimpus-site",
+  "version": "1.0.0",
+  "description": "Site da Academia Olimpus (Taquaritinga-SP) — integrado ao cardapio-admin para businessInfo",
+  "private": true,
+  "scripts": {
+    "dev": "python -m http.server 8080"
+  }
+}
