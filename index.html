@@ -476,7 +476,7 @@
     .instagram-handle:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -10px rgba(225,48,108,0.55); }
     .instagram-handle svg { width: 20px; height: 20px; }
     .instagram-handle svg rect, .instagram-handle svg circle, .instagram-handle svg line { stroke: url(#igGradient); }
-    .instagram-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+    .instagram-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 900px; margin: 0 auto; }
     .ig-item { position: relative; aspect-ratio: 1/1; border-radius: var(--radius-lg); overflow: hidden; background: var(--text-main); cursor: pointer; display: block; isolation: isolate; box-shadow: 0 4px 14px -6px rgba(15,15,15,0.15); transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease); }
     .ig-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease), filter 0.4s var(--ease); filter: saturate(1.05) brightness(0.97); }
     .ig-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(131,58,180,0.88), rgba(225,48,108,0.88), rgba(252,175,69,0.85)); opacity: 0; transition: opacity 0.35s var(--ease); z-index: 1; }
@@ -863,7 +863,7 @@
       .hero-tag { display: none; }
       .hero-img-wrap { height: 400px; }
       .features-grid, .plans-grid { grid-template-columns: repeat(2, 1fr); }
-      .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+      .instagram-grid { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
       .g-1, .g-2, .g-3, .g-4, .g-5 { grid-column: span 6; aspect-ratio: 1/1; }
       .app-section { padding: 4rem 2rem; }
       .header { width: min(800px, calc(100vw - 2rem)); }
@@ -2069,7 +2069,7 @@
 
       function render(posts) {
         if (!posts || !posts.length) { grid.innerHTML = '<div class="ig-empty">Acompanhe no <a href="https://www.instagram.com/academiaolimpustaq/" target="_blank" rel="noopener" style="color:var(--primary-dark);font-weight:700;">@academiaolimpustaq</a></div>'; return; }
-        grid.innerHTML = posts.slice(0, 6).map(function(p) {
+        grid.innerHTML = posts.slice(0, 9).map(function(p) {
           const safeAlt = (p.alt || 'Post do @academiaolimpustaq').replace(/"/g, '&quot;');
           return '<a class="ig-item interactive" href="' + p.postUrl + '" target="_blank" rel="noopener noreferrer" aria-label="Ver post no Instagram">' +
                  '<img src="' + p.image + '" alt="' + safeAlt + '" loading="lazy" decoding="async">' + icon + '</a>';
