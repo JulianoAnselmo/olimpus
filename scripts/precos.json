@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "vigenciaA partir": "2026-04",
+    "moeda": "BRL",
+    "atualizadoEm": "2026-04-25"
+  },
+  "musculacao": {
+    "1": { "label": "1x por semana", "mensal": [140, 135], "trimestral": [135, 405], "semestral": [127.40, 764.40], "anual": [120.40, 1444.80] },
+    "2": { "label": "2x por semana", "mensal": [160, 155], "trimestral": [155, 465], "semestral": [145.60, 873.60], "anual": [137.60, 1651.20] },
+    "3": { "label": "3x por semana", "mensal": [170, 165], "trimestral": [165, 495], "semestral": [154.70, 928.20], "anual": [146.20, 1754.40] },
+    "4": { "label": "4x por semana", "mensal": [190, 185], "trimestral": [185, 555], "semestral": [172.90, 1037.40], "anual": [163.40, 1960.80] },
+    "5": { "label": "5 a 6x por semana", "mensal": [200, 195], "trimestral": [195, 585], "semestral": [182, 1092], "anual": [172, 2064] }
+  },
+  "pacotes": [
+    { "id": "spinning", "m1": "Musculação 3x", "m2": "Spinning 2x", "preco": 220, "fam": 215 },
+    { "id": "hidro", "m1": "Musculação 3x", "m2": "Hidroginástica 2x", "preco": 225, "fam": 220 },
+    { "id": "natacao", "m1": "Musculação 3x", "m2": "Natação 2x", "preco": 245, "fam": 235 }
+  ],
+  "aulas": [
+    { "id": "spin", "titulo": "Spinning / Pump / Circuito / Zumba", "sub": "2x na semana", "preco": 130, "fam": 125 },
+    { "id": "hidro", "titulo": "Hidroginástica", "sub": "2x na semana", "preco": 150, "fam": 145 },
+    { "id": "natacao", "titulo": "Natação", "sub": "2x na semana", "preco": 170, "fam": 165 }
+  ],
+  "avulsos": [
+    { "titulo": "Diária Musculação", "sub": "1 dia de treino", "preco": 37 },
+    { "titulo": "Semana Musculação 3x", "sub": "3 treinos na semana", "preco": 105 },
+    { "titulo": "Semana Musculação", "sub": "Acesso liberado 7 dias", "preco": 120 },
+    { "titulo": "Quinzena Musculação 3x", "sub": "3 treinos por semana · 15 dias", "preco": 115 },
+    { "titulo": "Quinzena Musculação", "sub": "Acesso liberado 15 dias", "preco": 150 }
+  ]
+}

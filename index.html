@@ -345,6 +345,7 @@
     .g-3 { grid-column: 1 / 5; aspect-ratio: 1/1; }
     .g-4 { grid-column: 5 / 9; aspect-ratio: 1/1; }
     .g-5 { grid-column: 9 / 13; aspect-ratio: 1/1; }
+    .g-6 { grid-column: 1 / 13; aspect-ratio: 21/9; }
     .g-num { position: absolute; top: 1.2rem; left: 1.2rem; background: var(--primary); color: var(--text-main); font-family: 'Barlow Condensed'; font-weight: 800; font-size: 0.85rem; padding: 0.3rem 0.7rem; border-radius: 6px; letter-spacing: 0.1em; z-index: 3; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
     .g-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem 1.75rem; z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; }
     .g-content h3 { color: #fff; margin: 0; font-size: clamp(1.3rem, 2.4vw, 1.9rem); line-height: 1; letter-spacing: 0.01em; }
@@ -864,7 +865,7 @@
       .hero-img-wrap { height: 400px; }
       .features-grid, .plans-grid { grid-template-columns: repeat(2, 1fr); }
       .instagram-grid { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
-      .g-1, .g-2, .g-3, .g-4, .g-5 { grid-column: span 6; aspect-ratio: 1/1; }
+      .g-1, .g-2, .g-3, .g-4, .g-5, .g-6 { grid-column: span 6; aspect-ratio: 1/1; }
       .app-section { padding: 4rem 2rem; }
       .header { width: min(800px, calc(100vw - 2rem)); }
     }
@@ -1079,6 +1080,77 @@
     .plan-savings { display: inline-block; background: var(--primary); color: var(--text-main); padding: 0.4rem 0.9rem; border-radius: 999px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
     .plan-card.highlight .plan-savings { background: var(--primary); color: var(--text-main); }
     .plan-badge-alt { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--text-main); color: var(--primary); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.45rem 1rem; border-radius: 999px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); white-space: nowrap; z-index: 2; }
+    /* ====== Tabela de preços interativa ====== */
+    .pricing-reajuste { text-align:center; font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:1.25rem; }
+    .pricing-reajuste strong { color:var(--primary-dark); }
+    .pricing-tabs { display:flex; flex-wrap:wrap; justify-content:center; gap:0.5rem; margin:0 auto 2rem; max-width:780px; }
+    .pricing-tab { background:var(--surface); border:1px solid var(--border); color:var(--text-main); padding:0.75rem 1.5rem; border-radius:999px; font-weight:700; font-size:0.9rem; cursor:pointer; transition:var(--transition); font-family:inherit; letter-spacing:0.02em; }
+    .pricing-tab:hover { border-color:var(--primary); transform:translateY(-2px); }
+    .pricing-tab.active { background:var(--text-main); color:var(--primary); border-color:var(--text-main); box-shadow:var(--shadow-md); }
+    .pricing-controls { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:1rem; margin-bottom:2rem; }
+    .pricing-control-group { display:flex; flex-direction:column; gap:0.5rem; align-items:center; }
+    .pricing-control-label { font-size:0.7rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); }
+    .pricing-chips { display:flex; flex-wrap:wrap; gap:0.4rem; justify-content:center; }
+    .pricing-chip { background:var(--bg); border:1px solid var(--border); padding:0.5rem 1rem; border-radius:999px; font-size:0.85rem; font-weight:700; cursor:pointer; transition:var(--transition); font-family:inherit; color:var(--text-main); }
+    .pricing-chip:hover { border-color:var(--primary); }
+    .pricing-chip.active { background:var(--primary); color:var(--text-main); border-color:var(--primary); box-shadow:0 4px 12px rgba(244,196,31,0.35); }
+    .family-toggle { display:inline-flex; align-items:center; gap:0.6rem; background:var(--surface); padding:0.6rem 1.1rem; border-radius:999px; border:1px solid var(--border); cursor:pointer; user-select:none; font-weight:700; font-size:0.85rem; transition:var(--transition); }
+    .family-toggle:hover { border-color:var(--primary); }
+    .family-toggle input { appearance:none; width:38px; height:22px; background:var(--border); border-radius:999px; position:relative; cursor:pointer; transition:var(--transition); margin:0; }
+    .family-toggle input::before { content:''; position:absolute; top:2px; left:2px; width:18px; height:18px; background:#fff; border-radius:50%; transition:var(--transition); box-shadow:0 2px 4px rgba(0,0,0,0.2); }
+    .family-toggle input:checked { background:var(--primary); }
+    .family-toggle input:checked::before { transform:translateX(16px); }
+    .pricing-panel { display:none; animation:fadeInUp 0.4s ease both; }
+    .pricing-panel.active { display:block; }
+    .pricing-hero { background:var(--text-main); color:#fff; border-radius:var(--radius-md); padding:2.5rem 2rem; text-align:center; box-shadow:var(--shadow-lg); margin-bottom:2rem; position:relative; overflow:hidden; }
+    .pricing-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 20% 20%, rgba(244,196,31,0.18), transparent 50%); pointer-events:none; }
+    .pricing-hero-label { font-size:0.75rem; font-weight:800; letter-spacing:0.18em; text-transform:uppercase; color:var(--primary); margin-bottom:0.5rem; position:relative; }
+    .pricing-hero-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:2rem; line-height:1.1; margin:0 0 1rem; text-transform:uppercase; letter-spacing:-0.01em; position:relative; color:#fff; }
+    .pricing-hero-price { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:4.5rem; line-height:1; color:var(--primary); position:relative; }
+    .pricing-hero-price small { font-size:1.5rem; vertical-align:top; margin-right:0.2rem; opacity:0.9; }
+    .pricing-hero-period { font-size:0.85rem; color:#a1a1aa; margin-top:0.5rem; position:relative; }
+    .pricing-hero-total { display:inline-block; margin-top:1rem; background:rgba(244,196,31,0.15); color:var(--primary); padding:0.5rem 1.1rem; border-radius:999px; font-weight:700; font-size:0.85rem; position:relative; }
+    .pricing-hero-cta { display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.5rem; background:var(--primary); color:var(--text-main); padding:0.95rem 1.75rem; border-radius:999px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; font-size:0.85rem; transition:var(--transition); box-shadow:0 8px 24px rgba(244,196,31,0.4); position:relative; text-decoration:none; }
+    .pricing-hero-cta:hover { transform:translateY(-3px) scale(1.02); box-shadow:0 12px 32px rgba(244,196,31,0.55); }
+    .pricing-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.25rem; }
+    .pricing-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding:1.75rem 1.5rem; text-align:center; transition:var(--transition); display:flex; flex-direction:column; gap:0.5rem; position:relative; }
+    .pricing-card:hover { transform:translateY(-6px); border-color:var(--primary); box-shadow:var(--shadow-lg); }
+    .pricing-card-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.4rem; text-transform:uppercase; letter-spacing:0.01em; color:var(--text-main); margin:0; }
+    .pricing-card-sub { font-size:0.78rem; color:var(--text-muted); font-weight:600; }
+    .pricing-card-price { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:2.4rem; line-height:1; color:var(--text-main); margin:0.5rem 0 0.25rem; }
+    .pricing-card-price small { font-size:1rem; vertical-align:top; margin-right:0.1rem; }
+    .pricing-card-fam { font-size:0.75rem; color:var(--primary-dark); font-weight:700; }
+    .pricing-card-cta { margin-top:auto; padding-top:1rem; }
+    .pricing-card-cta a { display:inline-block; width:100%; background:var(--text-main); color:#fff; padding:0.7rem 1rem; border-radius:999px; font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; transition:var(--transition); text-decoration:none; }
+    .pricing-card-cta a:hover { background:var(--primary); color:var(--text-main); }
+    .pricing-chip:focus-visible { outline:2px solid var(--primary); outline-offset:3px; }
+    .pricing-tab:focus-visible { outline:2px solid var(--primary); outline-offset:3px; }
+    .pricing-chip.active { animation: chipGlow 2.4s ease-in-out infinite; }
+    @keyframes chipGlow {
+      0%, 100% { box-shadow:0 4px 12px rgba(244,196,31,0.35); }
+      50% { box-shadow:0 6px 22px rgba(244,196,31,0.65); }
+    }
+    .pricing-chip-badge { display:inline-block; margin-left:0.4rem; background:var(--text-main); color:var(--primary); font-size:0.6rem; font-weight:800; letter-spacing:0.08em; padding:0.15rem 0.45rem; border-radius:999px; vertical-align:middle; }
+    .pricing-chip.active .pricing-chip-badge { background:#fff; color:var(--text-main); }
+    .pricing-savings-bar { margin-top:1rem; position:relative; }
+    .pricing-savings-track { height:8px; background:rgba(255,255,255,0.12); border-radius:999px; overflow:hidden; max-width:340px; margin:0 auto; }
+    .pricing-savings-fill { height:100%; background:linear-gradient(90deg, var(--primary), #ffd84a); border-radius:999px; transition:width 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .pricing-savings-text { font-size:0.85rem; color:var(--primary); font-weight:700; margin-top:0.5rem; position:relative; }
+    .pricing-trust { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:1.25rem; margin:1.25rem auto 2rem; max-width:780px; font-size:0.8rem; color:var(--text-muted); font-weight:600; }
+    .pricing-trust-item { display:inline-flex; align-items:center; gap:0.4rem; }
+    .pricing-trust-item svg { width:16px; height:16px; color:var(--primary-dark); flex-shrink:0; }
+    .pricing-crosssell { margin-top:1.25rem; padding:1rem 1.25rem; background:rgba(244,196,31,0.08); border:1px dashed rgba(244,196,31,0.4); border-radius:var(--radius-md); display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:0.75rem; font-size:0.9rem; color:var(--text-main); }
+    .pricing-crosssell strong { color:var(--primary-dark); }
+    .pricing-crosssell button { background:var(--text-main); color:var(--primary); border:none; padding:0.55rem 1rem; border-radius:999px; font-weight:700; font-size:0.8rem; cursor:pointer; text-transform:uppercase; letter-spacing:0.06em; transition:var(--transition); font-family:inherit; }
+    .pricing-crosssell button:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+    @media (max-width: 600px) {
+      .pricing-hero-title { font-size:1.5rem; }
+      .pricing-hero-price { font-size:3.5rem; }
+      .pricing-tab { padding:0.6rem 1rem; font-size:0.8rem; }
+      .pricing-chips { flex-wrap:nowrap; overflow-x:auto; max-width:100%; padding:0.25rem 0.5rem 0.5rem; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+      .pricing-chips::-webkit-scrollbar { display:none; }
+      .pricing-chip { flex:0 0 auto; }
+    }
     .plans-includes { max-width: 720px; margin: 3rem auto 0; padding: 1.5rem 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); text-align: center; font-weight: 600; color: var(--text-main); font-size: 0.95rem; box-shadow: var(--shadow-sm); }
     .plans-includes strong { color: var(--primary-dark); font-weight: 800; }
     .partner-logos { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 3rem; }
@@ -1282,6 +1354,11 @@
             <span class="g-num">05</span>
             <div class="g-content"><div><span>Treino funcional</span><h3>Campo ao ar livre</h3></div><span class="g-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
           </div>
+          <div class="g-item g-6 reveal interactive" data-img="imagens/estacionamento.webp" data-caption="Estacionamento Próprio" data-index="5" role="button" tabindex="0" aria-label="Ver foto: Estacionamento Próprio">
+            <img src="imagens/estacionamento.webp" alt="Estacionamento próprio amplo para alunos da Academia Olimpus" loading="lazy" decoding="async" width="1600" height="686">
+            <span class="g-num">06</span>
+            <div class="g-content"><div><span>Vagas amplas · grátis</span><h3>Estacionamento</h3></div><span class="g-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1381,7 +1458,7 @@
           <article class="mod-card reveal delay-3 interactive">
             <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg></div>
             <span class="mod-tag">Cardio HIIT</span>
-            <h3>Bike Indoor</h3>
+            <h3>Spinning</h3>
             <p>Studio imersivo com iluminação e som próprios. Aulas coletivas de alta intensidade.</p>
             <ul class="mod-schedule ms-open">Consulte horários via WhatsApp</ul>
           </article>
@@ -1508,29 +1585,84 @@
           <div class="badge">Invista em Você</div>
           <h2>Planos Inteligentes.</h2>
         </div>
-        <div class="plans-grid">
-          <div class="plan-card reveal interactive">
-            <h3 style="color:var(--text-muted);">Mensal</h3>
-            <span class="plan-duration">1 mês</span>
-            <p>Perfeito para começar sem compromisso de longo prazo.</p>
-            <div style="margin-top: auto; padding-top: 2rem;"><a class="plan-wa-link btn btn-dark magnetic" href="https://wa.me/551632533000?text=Olá!%20Tenho%20interesse%20no%20plano%20Mensal%20da%20Academia%20Olimpus.%20Pode%20me%20dar%20mais%20informações%3F" target="_blank" rel="noopener noreferrer" style="width:100%;">Consultar via WhatsApp</a></div>
+        <p class="pricing-reajuste reveal">Tabela vigente <strong>a partir de 04/2026</strong></p>
+
+        <div class="pricing-tabs reveal" role="tablist">
+          <button type="button" class="pricing-tab active" data-tab="musc" role="tab" aria-selected="true">Musculação</button>
+          <button type="button" class="pricing-tab" data-tab="pacotes" role="tab" aria-selected="false">Pacotes Combinados</button>
+          <button type="button" class="pricing-tab" data-tab="aulas" role="tab" aria-selected="false">Outras Modalidades</button>
+          <button type="button" class="pricing-tab" data-tab="avulsos" role="tab" aria-selected="false">Avulsos</button>
+        </div>
+
+        <div class="pricing-controls reveal" id="familyToggleWrap">
+          <label class="family-toggle interactive">
+            <input type="checkbox" id="familyToggle" />
+            <span>Plano <strong>Família</strong> <span style="color:var(--text-muted); font-weight:600;">(por pessoa)</span></span>
+          </label>
+        </div>
+
+        <!-- ========== MUSCULAÇÃO ========== -->
+        <div class="pricing-panel active reveal" id="panel-musc">
+          <div class="pricing-controls">
+            <div class="pricing-control-group">
+              <span class="pricing-control-label">Frequência semanal</span>
+              <div class="pricing-chips" id="muscFreqChips">
+                <button type="button" class="pricing-chip" data-freq="1">1x</button>
+                <button type="button" class="pricing-chip" data-freq="2">2x</button>
+                <button type="button" class="pricing-chip active" data-freq="3">3x</button>
+                <button type="button" class="pricing-chip" data-freq="4">4x</button>
+                <button type="button" class="pricing-chip" data-freq="5">5 a 6x</button>
+              </div>
+            </div>
+            <div class="pricing-control-group">
+              <span class="pricing-control-label">Forma de pagamento</span>
+              <div class="pricing-chips" id="muscPayChips">
+                <button type="button" class="pricing-chip active" data-pay="mensal">Mensal</button>
+                <button type="button" class="pricing-chip" data-pay="trimestral">Trimestral</button>
+                <button type="button" class="pricing-chip" data-pay="semestral">Semestral</button>
+                <button type="button" class="pricing-chip" data-pay="anual">Anual<span class="pricing-chip-badge">Maior Economia</span></button>
+              </div>
+            </div>
           </div>
-          <div class="plan-card highlight reveal delay-1 interactive">
-            <span class="plan-badge">Mais Popular</span>
-            <h3 style="color:var(--primary);">Semestral</h3>
-            <span class="plan-duration">6 meses</span>
-            <span class="plan-savings">Economia no mês</span>
-            <p>Equilíbrio entre compromisso e desconto.</p>
-            <div style="margin-top: auto; padding-top: 2rem;"><a class="plan-wa-link btn btn-primary magnetic" href="https://wa.me/551632533000?text=Olá!%20Tenho%20interesse%20no%20plano%20Semestral%20da%20Academia%20Olimpus.%20Pode%20me%20dar%20mais%20informações%3F" target="_blank" rel="noopener noreferrer" style="width:100%;">Assinar Plano</a></div>
+
+          <div class="pricing-hero" id="muscHero" aria-live="polite">
+            <div class="pricing-hero-label" id="muscHeroLabel">Musculação · 3x por semana</div>
+            <h3 class="pricing-hero-title" id="muscHeroTitle">Pagamento Mensal</h3>
+            <div class="pricing-hero-price"><small>R$</small><span id="muscHeroPrice">170,00</span></div>
+            <div class="pricing-hero-period" id="muscHeroPeriod">por mês</div>
+            <div class="pricing-hero-total" id="muscHeroTotal" style="display:none;"></div>
+            <div class="pricing-savings-bar" id="muscSavingsBar" style="display:none;">
+              <div class="pricing-savings-track"><div class="pricing-savings-fill" id="muscSavingsFill" style="width:0%;"></div></div>
+              <div class="pricing-savings-text" id="muscSavingsText"></div>
+            </div>
+            <div><a id="muscHeroCta" class="pricing-hero-cta interactive" href="#" target="_blank" rel="noopener noreferrer">Quero esse plano →</a></div>
           </div>
-          <div class="plan-card plan-best reveal delay-2 interactive">
-            <span class="plan-badge-alt">Melhor Custo</span>
-            <h3 style="color:var(--text-muted);">Anual</h3>
-            <span class="plan-duration">12 meses</span>
-            <span class="plan-savings">Maior economia</span>
-            <p>Para quem tem o treino como estilo de vida.</p>
-            <div style="margin-top: auto; padding-top: 2rem;"><a class="plan-wa-link btn btn-primary magnetic" href="https://wa.me/551632533000?text=Olá!%20Tenho%20interesse%20no%20plano%20Anual%20da%20Academia%20Olimpus.%20Pode%20me%20dar%20mais%20informações%3F" target="_blank" rel="noopener noreferrer" style="width:100%;">Assinar Plano</a></div>
+
+          <div class="pricing-trust">
+            <span class="pricing-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Sem taxa de matrícula</span>
+            <span class="pricing-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Sem fidelidade no mensal</span>
+            <span class="pricing-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg>Valores oficiais Academia Olimpus</span>
           </div>
+
+          <div class="pricing-crosssell" id="muscCrossSell" style="display:none;">
+            <span>Treina <strong>3x</strong>? Adicione <strong>Spinning, Hidro ou Natação</strong> a partir de <strong>+R$ 50</strong>.</span>
+            <button type="button" data-go-tab="pacotes">Ver pacotes →</button>
+          </div>
+        </div>
+
+        <!-- ========== PACOTES ========== -->
+        <div class="pricing-panel reveal" id="panel-pacotes">
+          <div class="pricing-cards" id="pacotesCards"></div>
+        </div>
+
+        <!-- ========== AULAS ========== -->
+        <div class="pricing-panel reveal" id="panel-aulas">
+          <div class="pricing-cards" id="aulasCards"></div>
+        </div>
+
+        <!-- ========== AVULSOS ========== -->
+        <div class="pricing-panel reveal" id="panel-avulsos">
+          <div class="pricing-cards" id="avulsosCards"></div>
         </div>
         <div class="partner-logos reveal">
           <span class="partner-label">Credenciados em</span>
@@ -2267,6 +2399,313 @@
             window.open(url, '_blank');
         }, 1500);
     });
+  </script>
+
+  <!-- =============================================================
+       TABELA DE PREÇOS INTERATIVA
+       ============================================================= -->
+  <script>
+  (function() {
+    var WA_BASE = 'https://wa.me/551632533000';
+    var fmt = function(n) { return n.toFixed(2).replace('.', ','); };
+    var waLink = function(msg) { return WA_BASE + '?text=' + encodeURIComponent(msg); };
+
+    // Fallback inline (caso fetch falhe / file://)
+    var FALLBACK = {
+      musculacao: {
+        '1': { label:'1x por semana', mensal:[140,135], trimestral:[135,405], semestral:[127.40,764.40], anual:[120.40,1444.80] },
+        '2': { label:'2x por semana', mensal:[160,155], trimestral:[155,465], semestral:[145.60,873.60], anual:[137.60,1651.20] },
+        '3': { label:'3x por semana', mensal:[170,165], trimestral:[165,495], semestral:[154.70,928.20], anual:[146.20,1754.40] },
+        '4': { label:'4x por semana', mensal:[190,185], trimestral:[185,555], semestral:[172.90,1037.40], anual:[163.40,1960.80] },
+        '5': { label:'5 a 6x por semana', mensal:[200,195], trimestral:[195,585], semestral:[182,1092], anual:[172,2064] }
+      },
+      pacotes: [
+        { id:'spinning', m1:'Musculação 3x', m2:'Spinning 2x', preco:220, fam:215 },
+        { id:'hidro', m1:'Musculação 3x', m2:'Hidroginástica 2x', preco:225, fam:220 },
+        { id:'natacao', m1:'Musculação 3x', m2:'Natação 2x', preco:245, fam:235 }
+      ],
+      aulas: [
+        { id:'spin', titulo:'Spinning / Pump / Circuito / Zumba', sub:'2x na semana', preco:130, fam:125 },
+        { id:'hidro', titulo:'Hidroginástica', sub:'2x na semana', preco:150, fam:145 },
+        { id:'natacao', titulo:'Natação', sub:'2x na semana', preco:170, fam:165 }
+      ],
+      avulsos: [
+        { titulo:'Diária Musculação', sub:'1 dia de treino', preco:37 },
+        { titulo:'Semana Musculação 3x', sub:'3 treinos na semana', preco:105 },
+        { titulo:'Semana Musculação', sub:'Acesso liberado 7 dias', preco:120 },
+        { titulo:'Quinzena Musculação 3x', sub:'3 treinos por semana · 15 dias', preco:115 },
+        { titulo:'Quinzena Musculação', sub:'Acesso liberado 15 dias', preco:150 }
+      ]
+    };
+
+    var DATA = FALLBACK;
+    var MUSC = DATA.musculacao, PACOTES = DATA.pacotes, AULAS = DATA.aulas, AVULSOS = DATA.avulsos;
+    var PERIODS = { mensal:1, trimestral:3, semestral:6, anual:12 };
+
+    // Count-up animation
+    var animFrame = null;
+    function animatePrice(el, from, to, ms) {
+      if (animFrame) cancelAnimationFrame(animFrame);
+      var start = performance.now();
+      var diff = to - from;
+      function step(now) {
+        var t = Math.min((now - start) / ms, 1);
+        var eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = fmt(from + diff * eased);
+        if (t < 1) animFrame = requestAnimationFrame(step);
+      }
+      animFrame = requestAnimationFrame(step);
+    }
+
+    function injectJsonLd() {
+      try {
+        var offers = [];
+        Object.keys(MUSC).forEach(function(k) {
+          var d = MUSC[k];
+          ['mensal','trimestral','semestral','anual'].forEach(function(p) {
+            var v = d[p];
+            offers.push({
+              "@type": "Offer",
+              "name": "Musculação " + d.label + " · " + p,
+              "price": (p === 'mensal' ? v[0] : v[0]).toFixed(2),
+              "priceCurrency": "BRL",
+              "category": "Musculação",
+              "availability": "https://schema.org/InStock",
+              "url": "https://academiaolimpus.com.br/#planos"
+            });
+          });
+        });
+        PACOTES.forEach(function(p) {
+          offers.push({ "@type":"Offer", "name": p.m1+" + "+p.m2, "price": p.preco.toFixed(2), "priceCurrency":"BRL", "availability":"https://schema.org/InStock" });
+        });
+        AULAS.forEach(function(a) {
+          offers.push({ "@type":"Offer", "name": a.titulo+" ("+a.sub+")", "price": a.preco.toFixed(2), "priceCurrency":"BRL", "availability":"https://schema.org/InStock" });
+        });
+        AVULSOS.forEach(function(a) {
+          offers.push({ "@type":"Offer", "name": a.titulo, "price": a.preco.toFixed(2), "priceCurrency":"BRL", "availability":"https://schema.org/InStock" });
+        });
+        var ld = {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Planos Academia Olimpus Taquaritinga",
+          "description": "Tabela completa de planos: musculação, pacotes combinados, aulas coletivas e avulsos.",
+          "brand": { "@type": "Brand", "name": "Academia Olimpus" },
+          "offers": { "@type": "AggregateOffer", "priceCurrency": "BRL", "lowPrice": "37.00", "highPrice": "245.00", "offerCount": offers.length, "offers": offers }
+        };
+        var s = document.createElement('script');
+        s.type = 'application/ld+json';
+        s.id = 'precos-jsonld';
+        s.textContent = JSON.stringify(ld);
+        var existing = document.getElementById('precos-jsonld');
+        if (existing) existing.remove();
+        document.head.appendChild(s);
+      } catch(e) {}
+    }
+
+    // ---------- Estado ----------
+    var state = { tab:'musc', freq:'3', pay:'mensal', familia:false };
+
+    // ---------- Tabs ----------
+    var tabs = document.querySelectorAll('.pricing-tab');
+    var panels = {
+      musc: document.getElementById('panel-musc'),
+      pacotes: document.getElementById('panel-pacotes'),
+      aulas: document.getElementById('panel-aulas'),
+      avulsos: document.getElementById('panel-avulsos')
+    };
+    var familyWrap = document.getElementById('familyToggleWrap');
+
+    tabs.forEach(function(t) {
+      t.addEventListener('click', function() {
+        tabs.forEach(function(x) { x.classList.remove('active'); x.setAttribute('aria-selected','false'); });
+        t.classList.add('active'); t.setAttribute('aria-selected','true');
+        Object.keys(panels).forEach(function(k) { panels[k].classList.remove('active'); });
+        state.tab = t.dataset.tab;
+        panels[state.tab].classList.add('active');
+        // família não se aplica a avulsos
+        familyWrap.style.display = (state.tab === 'avulsos') ? 'none' : 'flex';
+        render();
+      });
+    });
+
+    // ---------- Família toggle ----------
+    document.getElementById('familyToggle').addEventListener('change', function(e) {
+      state.familia = e.target.checked;
+      render();
+    });
+
+    // ---------- Musculação chips ----------
+    document.querySelectorAll('#muscFreqChips .pricing-chip').forEach(function(c) {
+      c.addEventListener('click', function() {
+        document.querySelectorAll('#muscFreqChips .pricing-chip').forEach(function(x) { x.classList.remove('active'); });
+        c.classList.add('active');
+        state.freq = c.dataset.freq;
+        renderMusc();
+      });
+    });
+    document.querySelectorAll('#muscPayChips .pricing-chip').forEach(function(c) {
+      c.addEventListener('click', function() {
+        document.querySelectorAll('#muscPayChips .pricing-chip').forEach(function(x) { x.classList.remove('active'); });
+        c.classList.add('active');
+        state.pay = c.dataset.pay;
+        renderMusc();
+      });
+    });
+
+    // ---------- Render Musculação ----------
+    var lastPrice = 170;
+    function renderMusc() {
+      var data = MUSC[state.freq];
+      var pay = state.pay;
+      var meses = PERIODS[pay];
+      var precoMensal, total, mensalEquivalente;
+      var familiaAplicada = state.familia && pay === 'mensal';
+      var precoMensalCheio = data.mensal[0];
+      if (pay === 'mensal') {
+        precoMensal = state.familia ? data.mensal[1] : data.mensal[0];
+        total = null;
+      } else {
+        mensalEquivalente = data[pay][0];
+        total = data[pay][1];
+        precoMensal = mensalEquivalente;
+      }
+
+      document.getElementById('muscHeroLabel').textContent = 'Musculação · ' + data.label + (familiaAplicada ? ' · Família' : '');
+      var titulos = { mensal:'Pagamento Mensal', trimestral:'Pagamento Trimestral', semestral:'Pagamento Semestral', anual:'Pagamento Anual' };
+      document.getElementById('muscHeroTitle').textContent = titulos[pay];
+      var priceEl = document.getElementById('muscHeroPrice');
+      animatePrice(priceEl, lastPrice, precoMensal, 450);
+      lastPrice = precoMensal;
+      document.getElementById('muscHeroPeriod').textContent = pay === 'mensal' ? 'por mês · sem fidelidade' : 'por mês · pago à vista';
+
+      // Savings bar
+      var barWrap = document.getElementById('muscSavingsBar');
+      var fill = document.getElementById('muscSavingsFill');
+      var stext = document.getElementById('muscSavingsText');
+      if (pay !== 'mensal') {
+        var economiaMes = precoMensalCheio - mensalEquivalente;
+        var economiaTotal = economiaMes * meses;
+        var pct = Math.max(0, Math.min(100, Math.round((economiaMes / precoMensalCheio) * 100 * 5)));
+        barWrap.style.display = 'block';
+        fill.style.width = pct + '%';
+        stext.textContent = 'Você economiza R$ ' + fmt(economiaMes) + '/mês · R$ ' + fmt(economiaTotal) + ' no total';
+      } else {
+        barWrap.style.display = 'none';
+      }
+
+      // Cross-sell aparece em 3x mensal
+      var crossEl = document.getElementById('muscCrossSell');
+      crossEl.style.display = (state.freq === '3' && pay === 'mensal') ? 'flex' : 'none';
+      var totalEl = document.getElementById('muscHeroTotal');
+      if (total) {
+        var totalTxt = 'Total ' + pay + ': R$ ' + fmt(total) + ' (' + meses + 'x)';
+        if (state.familia && !familiaAplicada) {
+          totalTxt += ' · Família: consultar';
+        }
+        totalEl.style.display = 'inline-block';
+        totalEl.textContent = totalTxt;
+      } else {
+        totalEl.style.display = 'none';
+      }
+
+      var msg = 'Olá! Tenho interesse em Musculação ' + data.label +
+                ' · pagamento ' + pay +
+                (familiaAplicada ? ' (plano família)' : (state.familia ? ' (gostaria de saber preço família)' : '')) +
+                ' · R$ ' + fmt(precoMensal) + '/mês' +
+                (total ? ' (total R$ ' + fmt(total) + ')' : '') + '.';
+      document.getElementById('muscHeroCta').href = waLink(msg);
+    }
+
+    // ---------- Render Pacotes ----------
+    function renderPacotes() {
+      var html = PACOTES.map(function(p) {
+        var preco = state.familia ? p.fam : p.preco;
+        var msg = 'Olá! Tenho interesse no pacote ' + p.m1 + ' + ' + p.m2 +
+                  (state.familia ? ' (família)' : '') +
+                  ' · R$ ' + fmt(preco) + '/mês.';
+        return '<div class="pricing-card interactive">' +
+          '<h3 class="pricing-card-title">' + p.m1 + '<br><span style="color:var(--primary-dark);font-size:0.9rem;">+ ' + p.m2 + '</span></h3>' +
+          '<div class="pricing-card-sub">Mensalidade combinada</div>' +
+          '<div class="pricing-card-price"><small>R$</small>' + fmt(preco) + '</div>' +
+          (state.familia ? '<div class="pricing-card-fam">Plano Família · por pessoa</div>' : '<div class="pricing-card-fam" style="color:var(--text-muted);">Família: R$ ' + fmt(p.fam) + '/pessoa</div>') +
+          '<div class="pricing-card-cta"><a href="' + waLink(msg) + '" target="_blank" rel="noopener noreferrer">Quero esse pacote</a></div>' +
+        '</div>';
+      }).join('');
+      document.getElementById('pacotesCards').innerHTML = html;
+    }
+
+    // ---------- Render Aulas ----------
+    function renderAulas() {
+      var html = AULAS.map(function(a) {
+        var preco = state.familia ? a.fam : a.preco;
+        var msg = 'Olá! Tenho interesse em ' + a.titulo + ' (' + a.sub + ')' +
+                  (state.familia ? ' · plano família' : '') +
+                  ' · R$ ' + fmt(preco) + '/mês.';
+        return '<div class="pricing-card interactive">' +
+          '<h3 class="pricing-card-title">' + a.titulo + '</h3>' +
+          '<div class="pricing-card-sub">' + a.sub + '</div>' +
+          '<div class="pricing-card-price"><small>R$</small>' + fmt(preco) + '</div>' +
+          (state.familia ? '<div class="pricing-card-fam">Plano Família · por pessoa</div>' : '<div class="pricing-card-fam" style="color:var(--text-muted);">Família: R$ ' + fmt(a.fam) + '/pessoa</div>') +
+          '<div class="pricing-card-cta"><a href="' + waLink(msg) + '" target="_blank" rel="noopener noreferrer">Quero essa aula</a></div>' +
+        '</div>';
+      }).join('');
+      document.getElementById('aulasCards').innerHTML = html;
+    }
+
+    // ---------- Render Avulsos ----------
+    function renderAvulsos() {
+      var html = AVULSOS.map(function(a) {
+        var msg = 'Olá! Tenho interesse no avulso: ' + a.titulo + ' · R$ ' + fmt(a.preco) + '.';
+        return '<div class="pricing-card interactive">' +
+          '<h3 class="pricing-card-title">' + a.titulo + '</h3>' +
+          '<div class="pricing-card-sub">' + a.sub + '</div>' +
+          '<div class="pricing-card-price"><small>R$</small>' + fmt(a.preco) + '</div>' +
+          '<div class="pricing-card-cta"><a href="' + waLink(msg) + '" target="_blank" rel="noopener noreferrer">Quero esse avulso</a></div>' +
+        '</div>';
+      }).join('');
+      document.getElementById('avulsosCards').innerHTML = html;
+    }
+
+    function render() {
+      renderMusc();
+      renderPacotes();
+      renderAulas();
+      renderAvulsos();
+    }
+
+    // Cross-sell -> ativa aba pacotes
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('[data-go-tab]');
+      if (!btn) return;
+      var target = btn.dataset.goTab;
+      var tab = document.querySelector('.pricing-tab[data-tab="' + target + '"]');
+      if (tab) {
+        tab.click();
+        tab.scrollIntoView({ behavior:'smooth', block:'center' });
+      }
+    });
+
+    // Fetch JSON externo (com fallback)
+    function loadData() {
+      if (location.protocol === 'file:') { render(); injectJsonLd(); return; }
+      fetch('scripts/precos.json', { cache: 'default' })
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(json) {
+          if (json && json.musculacao) {
+            DATA = json;
+            MUSC = DATA.musculacao;
+            PACOTES = DATA.pacotes;
+            AULAS = DATA.aulas;
+            AVULSOS = DATA.avulsos;
+          }
+          render();
+          injectJsonLd();
+        })
+        .catch(function() { render(); injectJsonLd(); });
+    }
+
+    loadData();
+  })();
   </script>
 
   <!-- =============================================================
