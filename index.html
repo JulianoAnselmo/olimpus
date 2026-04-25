@@ -1147,9 +1147,14 @@
       .pricing-hero-title { font-size:1.5rem; }
       .pricing-hero-price { font-size:3.5rem; }
       .pricing-tab { padding:0.6rem 1rem; font-size:0.8rem; }
-      .pricing-chips { flex-wrap:nowrap; overflow-x:auto; max-width:100%; padding:0.25rem 0.5rem 0.5rem; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+      .pricing-controls { flex-direction:column; gap:1.25rem; align-items:stretch; }
+      .pricing-control-group { width:100%; align-items:stretch; }
+      .pricing-control-label { text-align:center; }
+      .pricing-chips { flex-wrap:nowrap; overflow-x:auto; max-width:100%; padding:0.5rem 1rem; margin:0 -1rem; justify-content:flex-start; scrollbar-width:none; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; }
       .pricing-chips::-webkit-scrollbar { display:none; }
-      .pricing-chip { flex:0 0 auto; }
+      .pricing-chip { flex:0 0 auto; scroll-snap-align:start; padding:0.55rem 0.85rem; font-size:0.8rem; }
+      .pricing-chip-badge { font-size:0.55rem; padding:0.1rem 0.35rem; margin-left:0.3rem; }
+      #muscPayChips, #muscFreqChips { position:relative; }
     }
     .plans-includes { max-width: 720px; margin: 3rem auto 0; padding: 1.5rem 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); text-align: center; font-weight: 600; color: var(--text-main); font-size: 0.95rem; box-shadow: var(--shadow-sm); }
     .plans-includes strong { color: var(--primary-dark); font-weight: 800; }
